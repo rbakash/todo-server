@@ -38,7 +38,6 @@ exports.getItem = async (req, res) => {
         return console.error(error.message);
       }
 
-      console.log(results);
       res.status(200).json({ message: "All the To do list tasks",data:results });
     });
   } catch (error) {
