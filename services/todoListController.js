@@ -7,16 +7,16 @@ exports.addItem = async (req, res) => {
   try {
     
     // Insert the todo item
-    let insertQuery = `INSERT INTO tbl_todo (title,description, isCompleted) 
-    VALUES ( ${database.escape(req.body.title)}, ${database.escape(req.body.description)}, 
-    ${req.body.isCompleted ? database.escape(req.body.isCompleted) : 0});`;
+    let insertQuery = `INSERT INTO tbl_todo (title, isCompleted) 
+    VALUES ( ${database.escape(req.body.title)}, 
+    ${database.escape(req.body.isCompleted)==1  ? 1 : 0});`;
 
     database.query(insertQuery, (error, results, fields) => {
      
       if (error) {
         throw error;
       }
-      res.status(200).json({ message: "New todo list Item added",data:[] });
+      res.status(200).json({ message: "New todo list task added",data:[] });
     });
   } catch (error) {
     
@@ -30,7 +30,7 @@ exports.getItem = async (req, res) => {
 
   try {    
     // Retreive all the Items the todo item
-    let retrieveQuery = `SELECT * FROM tbl_todo;`;
+    let retrieveQuery = `SELECT id,title,isCompleted FROM tbl_todo;`;
 
     database.query(retrieveQuery, (error, results, fields) => {
 
@@ -39,7 +39,7 @@ exports.getItem = async (req, res) => {
       }
 
       console.log(results);
-      res.status(200).json({ message: "All the To do list items",data:results });
+      res.status(200).json({ message: "All the To do list tasks",data:results });
     });
   } catch (error) {
 
@@ -54,17 +54,16 @@ exports.updateItem = async (req, res) => {
   try {
     
     // Update the todo item
-    let updateItemQuery = `UPDATE tbl_todo SET title = ${database.escape(req.body.title)},
-    description=${database.escape(req.body.description)}
-    ,iscompleted=${req.body.isCompleted ? database.escape(req.body.isCompleted) : 0} 
-    WHERE (id = ${database.escape(req.params.item_Id)});`;
+    let updateItemQuery = `UPDATE tbl_todo SET title = ${database.escape(req.body.title)}
+    ,iscompleted=${database.escape(req.body.isCompleted) ==1  ? 1 : 0} 
+    WHERE (id = ${database.escape(req.params.task_Id)});`;
 
     database.query(updateItemQuery, (error, results, fields) => {
      
       if (error) {
         throw error;
       }
-      res.status(200).json({ message: "Updated the todo list Item",data:[] });
+      res.status(200).json({ message: "Updated the todo list task",data:[] });
     });
   } catch (error) {
     
@@ -78,7 +77,7 @@ exports.deleteItem = async (req, res) => {
 
   try {    
     // Delete the todo item
-    let retrieveQuery = `DELETE FROM tbl_todo WHERE (id = ${database.escape(req.params.item_Id)});`;
+    let retrieveQuery = `DELETE FROM tbl_todo WHERE (id = ${database.escape(req.params.task_Id)});`;
 
     database.query(retrieveQuery, (error, results, fields) => {
 
@@ -86,7 +85,7 @@ exports.deleteItem = async (req, res) => {
         return console.error(error.message);
       }
 
-      res.status(200).json({ message: "Deleted the To do list item",data:[] });
+      res.status(200).json({ message: "Deleted the To do list task",data:[] });
     });
   } catch (error) {
 
