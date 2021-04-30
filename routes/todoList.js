@@ -1,13 +1,30 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var todoListController = require('../services/todoListController');
+var todoListController = require("../services/todoListController");
+
+/* GET Todolist Items */
+router.get("/items", function (req, res) {
+  todoListController.getItem(req, res);
+});
 
 /* POST Todolist Item */
-router.post('/add',function (req, res) {
+router.post("/item", function (req, res) {
   todoListController.addItem(req, res);
 });
 
-router.get('*', function(req, res){
+/* PUT Todolist Item */
+router.put("/item/:item_Id", function (req, res) {
+  todoListController.updateItem(req, res);
+});
+
+/* DELETE Todolist Item */
+router.delete("/item/:item_Id", function (req, res) {
+  todoListController.deleteItem(req, res);
+});
+
+// Catch all unknown route
+router.get("*", function (req, res) {
   res.status(404).json({ message: "Unknown route" });
-  });
+});
+
 module.exports = router;
