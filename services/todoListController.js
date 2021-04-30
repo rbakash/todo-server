@@ -16,7 +16,7 @@ exports.addItem = async (req, res) => {
       if (error) {
         throw error;
       }
-      res.status(200).json({ message: "New todo list task added",data:[] });
+      res.status(200).json({ message: "New todo list task added",data:{insertId: results.insertId} });
     });
   } catch (error) {
     
