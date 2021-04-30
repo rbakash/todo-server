@@ -1,0 +1,37 @@
+{
+  "name": "todo-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon server.js",
+    "build": "gulp build",
+    "build-prod": "gulp build",
+    "watch": "gulp watch"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.1",
+    "gulp-live-server": "0.0.29",
+    "gulp-shell": "^0.5.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.6",
+    "helmet": "^4.5.0",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "mysql": "github:mysqljs/mysql",
+    "nodemon": "^2.0.7",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.13.15",
+    "@babel/register": "^7.13.16"
+  }
+}
