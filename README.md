@@ -2,8 +2,8 @@
 
 #### Single read me file for both the frontend and backend
 
-#### 1.A description of the important libraries you used for each component and why you chose it
-#### Only one external library used(React app) is Axios  - to consume the Node.js REST API and reason is second .then is execute even though the request has failed (Ideally it should go to catch statement), axios throws it to catch statement. Node server uses express( For easy routing and middleware handling),Morgan( For request logging),CORS(To allows request from any other origins (domain, scheme, or port) than its own),dotenv( To load the environment variables from .env file),pm2( To load balance and run the server as daemon process).
+#### 1. A description of the important libraries you used for each component and why you chose it
+#### Only one external library used(React app) is Axios  - to consume the Node.js REST API and reason is second .then is execute even though the request has failed (Ideally it should go to catch statement), axios throws it to catch statement. Node server uses express( For easy routing and middleware handling),Morgan( For request logging),CORS(To allows request from any other origins (domain, scheme, or port) than its own),dotenv( To load the environment variables from .env file),pm2( To load balance and run the server as daemon process),XSS( To prevent cross site scripting attacks).
 
 #### 2. A description of how you store the list items on the backend - The data structure decision you made for storing them and why you made it.
 #### I have used a simple table in google mysql server instance, schema of table is (id,title,isCompleted). I haven't used any other Data structure as the schema was sufficient.
