@@ -24,7 +24,7 @@ router.delete("/task/:task_Id", function (req, res) {
 
 // Catch all unknown route
 router.get("*", function (req, res) {
-  res.status(404).json({ message: "Unknown route" });
+  res.status(404).json({ message: "Unknown task route, Use options to get the list of methods" });
 });
 
 module.exports = router;
